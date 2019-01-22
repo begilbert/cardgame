@@ -1,0 +1,21 @@
+class card:
+  values = {'Ace': 1, 'Jack':11,'Queen':12, 'King':13}
+  for x in range(2,11):
+    values[str(x)] = x
+  suits = ['Spades', 'Clubs', 'Hearts', 'Diamonds']
+  def __init__(self, number, suit):
+    number = str(number)
+    if not (number in card.values and suit in card.suits):
+      raise ValueError('That isn\'t a card you dumbass')
+    self.number = number
+    self.suit = suit
+  def getcard(self):
+    return (self.number, self.suit)
+  def ishigherthan(self, compcard):
+    return (card.values[self.number] > card.values[compcard.number])
+deck = list()
+for suit in card.suits:
+  for val in card.values:
+    deck.append(card(val, suit))
+for x in deck:
+  print(x.getcard())
